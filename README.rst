@@ -6,7 +6,7 @@ A very simple Python package for parsing YAML Front Matter from a text file. Wri
 Usage
 ------
 
-.. code:: python
+.. code::
 
     import frontmatter
 
@@ -18,7 +18,7 @@ Usage
 
 The output would be:
 
-.. code:: bash
+.. code::
 
     {'foo': 'bar', 'num': 3, 'list': ['first', 'second', 'third']}
     
@@ -27,7 +27,7 @@ The output would be:
 
 In the above example, the contents of **testfile.md** is:
 
-.. code:: markdown
+.. code::
 
     ---
     foo: bar
@@ -36,7 +36,7 @@ In the above example, the contents of **testfile.md** is:
     - first
     - second
     - third
-    
+    ---
     
     This is the actual post content
     This is a second line
