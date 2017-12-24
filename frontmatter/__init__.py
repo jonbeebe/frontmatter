@@ -21,10 +21,10 @@ def __separate_yaml_content(lines=[]):
 
     for line in lines:
         if marker_reached:
-            if line.startswith('---'):
+            if line.startswith('---') or line.startswith('+++'):
                 break;
             yaml_content += line
-        elif line.startswith('---'):
+        elif line.startswith('---') or line.startswith('+++'):
             marker_reached = True
         linenum += 1
 
