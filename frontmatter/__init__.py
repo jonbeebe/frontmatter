@@ -2,16 +2,14 @@ import yaml
 
 def parse(filename):
     """Opens file and returns Dictionary with metadata and content"""
-    lines = [] # TODO: remove if lines in with block is sufficient
     with open(filename) as f:
         lines = [line for line in f]
 
     separated = __separate_yaml_content(lines)
-    meta = separated.get('yaml', {})
-    contentlines = separated.get('nextlines', [])
+    meta = separated[0]
+    contentlines = separated[1]
     content = ''.join(x for x in contentlines)
 
-    # TODO: consider returning a tuple instead
     return { 'metadata': meta, 'content': content }
 
 def __separate_yaml_content(lines=[]):
@@ -29,8 +27,8 @@ def __separate_yaml_content(lines=[]):
             marker_reached = True
         linenum += 1
 
-    parsedyaml = yaml.load(yaml_content)
+    parsedyaml = yaml.load(yaml_content) or {}
     nextline = linenum + 1;
+    remaining = lines[nextline:]
 
-    # TODO: return a Tuple instead
-    return { 'yaml': parsedyaml, 'nextlines': lines[nextline:] }
+    return (parsedyaml, remaining)
