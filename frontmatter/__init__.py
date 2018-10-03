@@ -1,6 +1,14 @@
 import re
 import yaml
 
+__yaml_delim = "^(?:---|\+\+\+)(?:\s+)?\n"
+__capture_all = "(.+)"
+__re_pattern = (__yaml_delim +
+                __capture_all +  # YAML frontmatter
+                __yaml_delim +
+                __capture_all)   # Remaining content (e.g. markdown)
+__regex = re.compile(__re_pattern, re.S | re.M)
+
 def parse(filename):
     """Opens file and returns Dictionary with metadata and content"""
     file_contents = ""
@@ -14,13 +22,7 @@ def parse(filename):
 
 def __separate_yaml_content(yaml_content=""):
     """Separates yaml lines from list of strings"""
-    yaml_delim = "^(?:---|\+\+\+)(?:\s+)?\n" # +++ or --- to start/end YAML
-    everything = "(.+)"
-    yaml_pattern = (yaml_delim +
-                    everything +  # YAML frontmatter
-                    yaml_delim +
-                    everything)   # Remaining content (e.g. markdown)
-    result = re.search(yaml_pattern, yaml_content, re.S | re.M)
+    result = __regex.search(yaml_content)
     if result:
         metadata = yaml.load(result.group(1))
         content = result.group(2)
