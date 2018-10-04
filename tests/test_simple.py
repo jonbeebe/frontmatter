@@ -1,13 +1,14 @@
-import frontmatter
+from frontmatter import Frontmatter
 
-post = frontmatter.parse('./tests/testfile.md')
+post = Frontmatter.read_file('./tests/testfile.md')
 
-print("frontmatter.tests.test_simple")
+print("\n[attributes]")
+print(post['attributes'])
 
-print("\n[metadata]")
-print(post['metadata'])
+print("\n[body]")
+print(post['body'])
 
-print("\n[content]")
-print(post['content'])
+print("\n[frontmatter]")
+print(post["frontmatter"])
 
 print("\nTEST SUCCEEDED.")

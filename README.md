@@ -1,19 +1,20 @@
 frontmatter
 ============
 
-A very simple Python package for parsing YAML Front Matter from a text file. Written for Python 3, but works for 2.
+A very simple Python package for parsing YAML Front Matter from a text file. Written for Python 3, but should also work Python 2.
 
 Usage
 ------
 
 ```
-import frontmatter
+from frontmatter import Frontmatter
 
 # assuming 'testfile.md' exists
-post = frontmatter.parse('testfile.md')
+post = Frontmatter.read_file('testfile.md')
 
-print(post['metadata']) # Dictionary
-print(post['content'])  # String
+print(post['attributes'], "\n")  # Dictionary
+print(post['body'], "\n")        # String
+print(post['frontmatter'])       # String
 ```
 
 The output would be:
@@ -23,6 +24,13 @@ The output would be:
 
 This is the actual post content
 This is a second line
+
+foo: bar
+num: 3
+list:
+- first
+- second
+- third
 ```
 
 In the above example, the contents of **testfile.md** is:
@@ -44,4 +52,4 @@ This is a second line
 LICENSE
 --------
 
-ISC (see [LICENSE](./LICENSE) file).
+[ISC License](https://en.wikipedia.org/wiki/ISC_license)
