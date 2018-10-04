@@ -37,15 +37,15 @@ class Frontmatter:
         return {
             "attributes": attributes,
             "body": body,
-            "frontmatter": fmatter
+            "frontmatter": fmatter,
         }
 
     @classmethod
     def __separate_yaml_content(cls, yaml_content=""):
-        """Separates yaml lines from list of strings"""
+        """Separates YAML lines from list of strings"""
         result = cls._regex.search(yaml_content)
         if result:
             fmatter = result.group(1)
             body = result.group(2)
             return (fmatter, body)
-        return (None, "")
+        return ("", "")

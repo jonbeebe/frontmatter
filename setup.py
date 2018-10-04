@@ -12,7 +12,7 @@ with open(path.join(here, 'README.md'), encoding='utf-8') as f:
 
 # Append LICENSE to end of README
 with open(path.join(here, 'LICENSE'), encoding='utf-8') as f:
-    long_description += f.read()
+    long_description += ("\n\n" + f.read())
 
 with open(path.join(here, 'VERSION'), encoding='utf-8') as f:
     package_version = f.read()
