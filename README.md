@@ -1,7 +1,7 @@
 frontmatter
 ============
 
-A very simple Python package for parsing YAML Front Matter from a text file or string. Written for Python 3, but should also work Python 2.
+A simple Python package for parsing YAML Frontmatter from a text file or string. Written for Python 3, but should also work for Python 2.7.
 
 Usage
 ------
