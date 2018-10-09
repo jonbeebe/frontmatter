@@ -2,8 +2,9 @@ import re
 import yaml
 
 class Frontmatter:
-    _yaml_delim = "^(?:---|\+\+\+)(?:\s+)?\n"
-    _re_pattern = (_yaml_delim + "(.+)") * 2
+    _yaml_delim = r'(?:---|\+\+\+)'
+    _all = r'(.*?)'
+    _re_pattern = r'^\s*' + _yaml_delim + _all + _yaml_delim + r'\s*' + _all + r'$'
     _regex = re.compile(_re_pattern, re.S | re.M)
 
     @classmethod
@@ -27,6 +28,7 @@ class Frontmatter:
         fmatter = ""
         body = ""
         result = cls._regex.search(string)
+
         if result:
             fmatter = result.group(1)
             body = result.group(2)
