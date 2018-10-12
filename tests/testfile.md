@@ -1,19 +1,17 @@
 ---
-foo: bar
-num: 3
-list:
-- first
-- second
-- third
+title: Third Post
+date: Oct 8, 2018 5:26pm PST
+---
+
+This is my third post with a blockquote and footnote[^1]:
+
+> This is what someone said.
 
 ---
 
-This is the actual post content
-
-This is a second line. HR rule below:
+This is a [link to this post]({{ ref "2018/09/first-post" }}) and [another link]({{ ref "2018/09/first-post" }}).
 
 ---
 
-Underneath the HR rule.
+[^1]: This would be a footnote with a [link to first post]({{ ref "2018/09/first-post" }}).
 
----

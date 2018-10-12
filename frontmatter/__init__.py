@@ -3,8 +3,9 @@ import yaml
 
 class Frontmatter:
     _yaml_delim = r'(?:---|\+\+\+)'
-    _all = r'(.*?)'
-    _re_pattern = r'^\s*' + _yaml_delim + _all + _yaml_delim + r'\s*' + _all + r'$'
+    _yaml = r'(.*?)'
+    _content = r'\s*(.+)$'
+    _re_pattern = r'^\s*' + _yaml_delim + _yaml + _yaml_delim + _content
     _regex = re.compile(_re_pattern, re.S | re.M)
 
     @classmethod
