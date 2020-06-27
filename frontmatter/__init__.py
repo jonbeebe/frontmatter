@@ -34,7 +34,7 @@ class Frontmatter:
             fmatter = result.group(1)
             body = result.group(2)
         return {
-            "attributes": yaml.load(fmatter),
+            "attributes": yaml.load(fmatter, Loader=yaml.FullLoader),
             "body": body,
             "frontmatter": fmatter,
         }
