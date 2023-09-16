@@ -2,7 +2,7 @@ import re
 import yaml
 
 class Frontmatter:
-    _yaml_delim = r'(?m:^---|\+\+\+$)'
+    _yaml_delim = r'(?m:^---$)'
     _yaml = r'(.*?)'
     _content = r'\s*(.+)$'
     _re_pattern = r'^\s*' + _yaml_delim + _yaml + _yaml_delim + _content
